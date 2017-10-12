@@ -15,7 +15,7 @@
             var s = new Student();
             s.name = "Ahmed";
             s.phone = "123";
-            var info = s.getInfo;
+            var info = s.getInfo();
             console.log(info);
 
         }
