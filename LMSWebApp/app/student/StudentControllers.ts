@@ -1,7 +1,5 @@
-﻿module App
-{
-    class Student
-    {
+﻿module App {
+    class Student {
         name: string;
         phone: string;
 
@@ -14,17 +12,22 @@
         student: Student;
         value: string;
 
-        constructor()
-        {
+        constructor() {
             this.student = new Student();
         }
 
-        display(): void
-        {
+        display(): void {
             this.value = this.student.getInfo();
         }
     }
-
-    let app = angular.module('app', []);
     angular.module('app').controller("StudentController", StudentController as any);
+
+    class StudentsController {
+        students: Student[];
+
+        constructor() {
+            this.students = [];
+        }
+    }
+    angular.module('app').controller("StudentsController", StudentsController as any);
 }
