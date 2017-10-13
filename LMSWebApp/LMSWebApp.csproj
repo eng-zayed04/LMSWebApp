@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="index.html" />
     <Content Include="partials\home\home.tpl.html" />
     <Content Include="partials\student\student-entry.tpl.html" />
     <Content Include="partials\student\student-list.tpl.html" />
@@ -83,7 +84,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -96,6 +96,7 @@
     <TypeScriptCompile Include="app\app.config.ts" />
     <TypeScriptCompile Include="app\home\HomeControllers.ts" />
     <TypeScriptCompile Include="app\student\StudentControllers.ts" />
+    <TypeScriptCompile Include="app\student\StudentService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-router\index.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
