@@ -14,6 +14,7 @@
 
         constructor() {
             this.student = new Student();
+            console.log("I am in Student Controller");
         }
 
         display(): void {
@@ -27,6 +28,7 @@
 
         constructor() {
             this.students = [];
+            console.log("I am in Students Controller");
         }
     }
     angular.module('app').controller("StudentsController", StudentsController as any);
