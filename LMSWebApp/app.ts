@@ -6,18 +6,22 @@
         phone: string;
 
         getInfo(): string {
-            return this.name + this.phone;
+            return this.name + " " + this.phone;
         }
     }
 
     class StudentController {
-        getStudentInfo(): void {
-            var s = new Student();
-            s.name = "Ahmed";
-            s.phone = "123";
-            var info = s.getInfo();
-            console.log(info);
+        student: Student;
+        value: string;
 
+        constructor()
+        {
+            this.student = new Student();
+        }
+
+        display(): void
+        {
+            this.value = this.student.getInfo();
         }
     }
 

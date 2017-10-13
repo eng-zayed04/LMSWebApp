@@ -5,7 +5,10 @@
     <title></title>
 </head>
 <body ng-controller="StudentController as vm">
-    <button ng-click="vm.getStudentInfo()">Get</button>
+    <input type="text" ng-model="vm.student.name" />
+    <input type="text" ng-model="vm.student.phone" />
+    <button ng-click="vm.display()">Get</button>
+    <span>{{vm.value}}</span>
     <script src="Scripts/angular.js"></script>
     <script src="app.js"></script>
 </body>

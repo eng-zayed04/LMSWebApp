@@ -4,19 +4,16 @@ var App;
         function Student() {
         }
         Student.prototype.getInfo = function () {
-            return this.name + this.phone;
+            return this.name + " " + this.phone;
         };
         return Student;
     }());
     var StudentController = /** @class */ (function () {
         function StudentController() {
+            this.student = new Student();
         }
-        StudentController.prototype.getStudentInfo = function () {
-            var s = new Student();
-            s.name = "Ahmed";
-            s.phone = "123";
-            var info = s.getInfo();
-            console.log(info);
+        StudentController.prototype.display = function () {
+            this.value = this.student.getInfo();
         };
         return StudentController;
     }());
