@@ -7,5 +7,5 @@
             console.log("Initiate student service.", this.students);
         }
     }
-    angular.module("app").controller("StudentService", StudentService as any);
+    angular.module('app').service("StudentService", StudentService as any);
 }

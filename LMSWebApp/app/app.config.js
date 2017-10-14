@@ -1,6 +1,5 @@
 var App;
 (function (App) {
-    var app = angular.module('app', ["ui-router"]);
     var Configuration = /** @class */ (function () {
         function Configuration(stateProvider, urlRouteProvider) {
             urlRouteProvider.otherwise("/");
@@ -32,6 +31,7 @@ var App;
         Configuration.$inject = ["$stateProvider", "$urlRouterProvider"];
         return Configuration;
     }());
+    angular.module('app', ["ui.router"]);
     angular.module('app').config(Configuration);
 })(App || (App = {}));
 //# sourceMappingURL=app.config.js.map

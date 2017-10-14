@@ -1,7 +1,5 @@
 ﻿module App
 {
-    var app = angular.module('app', ["ui-router"]);
-
     class Configuration {
         static $inject = ["$stateProvider", "$urlRouterProvider"];
         constructor(stateProvider: angular.ui.IStateProvider, urlRouteProvider: angular.ui.IUrlRouterProvider) {
@@ -36,10 +34,9 @@
                             controller: "StudentsController",
                             controllerAs: "vm"
                         })
-
                 ;
         }
-
     }
+    angular.module('app', ["ui.router"]);
     angular.module('app').config(Configuration);
 }

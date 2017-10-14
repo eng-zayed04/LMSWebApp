@@ -13,6 +13,7 @@
         value: string;
         studentService: StudentService;
         static $inject = ["StudentService"];
+
         constructor(studentService: StudentService) {
             this.student = new Student();
             this.studentService = studentService;
@@ -36,6 +37,7 @@
     class StudentsController {
         students: Student[];
         studentService: StudentService;
+        static $inject = ["StudentService"];
 
         constructor(studentService: StudentService) {
             this.studentService = studentService;
