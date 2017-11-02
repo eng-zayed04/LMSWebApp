@@ -1,9 +1,19 @@
 ﻿module App
 {
     class HomeController {
-        constructor() {
+        static $inject=["StudentService"];
+        constructor(studentService:StudentService) {
             console.log("I am in Home Controller");
             this.now = new Date().toString();
+            studentService.get()
+                .then(function(success) {
+                        console.log(success);
+                    },
+                    function(error) {
+                        console.log(error);
+                        alert(error);
+                    }
+                );
         }
         now: string;
     }
