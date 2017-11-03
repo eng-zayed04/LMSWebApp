@@ -35,6 +35,7 @@
     angular.module('app').controller("StudentController", StudentController as any);
 
     class StudentsController {
+        keyword:string;
         students: Student[];
         studentService: StudentService;
         static $inject = ["StudentService"];
@@ -44,10 +45,22 @@
             let self = this;
             let success = function (response) {
                 self.students = response.data;
-                console.log("I am in Students Controller", self.students);
+                console.log(self.students);
             };
-            let error = function(errorReason) { alert (errorReason); };
-            this.studentService.get().then(success, error);
+            let error = function (errorReason) { alert(errorReason); };
+            console.log("I am in Students Constructor Controller");
+            this.studentService.search("").then(success, error);
+        }
+
+        search() {
+            var self = this;
+            let success = function (response) {
+                console.log(response);
+                self.students = response.data;
+            };
+            let error = function (errorReason) { console.log(errorReason); };
+
+            this.studentService.search(self.keyword).then(success, error);
         }
     }
     angular.module('app').controller("StudentsController", StudentsController as any);

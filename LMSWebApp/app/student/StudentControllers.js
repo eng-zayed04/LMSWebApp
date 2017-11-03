@@ -35,11 +35,21 @@ var App;
             var self = this;
             var success = function (response) {
                 self.students = response.data;
-                console.log("I am in Students Controller", self.students);
+                console.log(self.students);
             };
             var error = function (errorReason) { alert(errorReason); };
-            this.studentService.get().then(success, error);
+            console.log("I am in Students Constructor Controller");
+            this.studentService.search("").then(success, error);
         }
+        StudentsController.prototype.search = function () {
+            var self = this;
+            var success = function (response) {
+                console.log(response);
+                self.students = response.data;
+            };
+            var error = function (errorReason) { console.log(errorReason); };
+            this.studentService.search(self.keyword).then(success, error);
+        };
         StudentsController.$inject = ["StudentService"];
         return StudentsController;
     }());
