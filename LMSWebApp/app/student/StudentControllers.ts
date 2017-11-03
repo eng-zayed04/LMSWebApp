@@ -1,11 +1,8 @@
 ﻿module App {
     export class Student {
+        id:string;
         name: string;
         phone: string;
-
-        getInfo(): string {
-            return this.name + " " + this.phone;
-        }
     }
 
     class StudentController {
@@ -20,13 +17,16 @@
             console.log("I am in Student Controller");
         }
 
-        display(): void {
-            this.value = this.student.getInfo();
-        }
-
         add(): void {
-            this.studentService.students.push(this.student);
-            this.student = new Student();
+            let self = this;
+            let success = function(response) {
+                console.log(response);
+                self.student = new Student();
+                self.reset();
+            };
+            let error = function (errorReason) { console.log(errorReason); };
+
+            this.studentService.save(self.student).then(success, error);
         }
         reset(): void {
             this.student = new Student();
@@ -41,8 +41,13 @@
 
         constructor(studentService: StudentService) {
             this.studentService = studentService;
-            this.students = this.studentService.students;
-            console.log("I am in Students Controller", this.students);
+            let self = this;
+            let success = function (response) {
+                self.students = response.data;
+                console.log("I am in Students Controller", self.students);
+            };
+            let error = function(errorReason) { alert (errorReason); };
+            this.studentService.get().then(success, error);
         }
     }
     angular.module('app').controller("StudentsController", StudentsController as any);

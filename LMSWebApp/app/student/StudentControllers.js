@@ -3,9 +3,6 @@ var App;
     var Student = /** @class */ (function () {
         function Student() {
         }
-        Student.prototype.getInfo = function () {
-            return this.name + " " + this.phone;
-        };
         return Student;
     }());
     App.Student = Student;
@@ -15,12 +12,15 @@ var App;
             this.studentService = studentService;
             console.log("I am in Student Controller");
         }
-        StudentController.prototype.display = function () {
-            this.value = this.student.getInfo();
-        };
         StudentController.prototype.add = function () {
-            this.studentService.students.push(this.student);
-            this.student = new Student();
+            var self = this;
+            var success = function (response) {
+                console.log(response);
+                self.student = new Student();
+                self.reset();
+            };
+            var error = function (errorReason) { console.log(errorReason); };
+            this.studentService.save(self.student).then(success, error);
         };
         StudentController.prototype.reset = function () {
             this.student = new Student();
@@ -32,8 +32,13 @@ var App;
     var StudentsController = /** @class */ (function () {
         function StudentsController(studentService) {
             this.studentService = studentService;
-            this.students = this.studentService.students;
-            console.log("I am in Students Controller", this.students);
+            var self = this;
+            var success = function (response) {
+                self.students = response.data;
+                console.log("I am in Students Controller", self.students);
+            };
+            var error = function (errorReason) { alert(errorReason); };
+            this.studentService.get().then(success, error);
         }
         StudentsController.$inject = ["StudentService"];
         return StudentsController;
