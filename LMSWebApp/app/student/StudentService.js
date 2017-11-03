@@ -17,7 +17,7 @@ var App;
                 console.log(errorresponse);
                 deffered.reject(errorresponse);
             };
-            self.http.get("https://www.google.com").then(f1, f2);
+            self.http.get("http://localhost:52456/api/values").then(f1, f2);
             //            self.http.get(url).then((result: any): any => {
             //                    if (result.status === 200) {
             //                        deffered.resolve(result);
